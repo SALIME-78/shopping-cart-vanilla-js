@@ -6,7 +6,6 @@ clearCartBtn = document.getElementById('clear-cart')
 function updateCart() {
     const cartContainer = document.getElementById("cartContainer");
     const totalCartPrice = document.getElementById("total-price");
-  
     // Vider le contenu du panier
     cartContainer.innerHTML = "";
   
@@ -14,6 +13,7 @@ function updateCart() {
 
     if(cart == [] || cart.length < 1 || cart == null){
       clearCartBtn.style.display = 'none'
+
       cartContainer.innerHTML = `
          <div class="d-flex justify-content-center mt-5"><h3>No Item In The Cart</h3></div>
       `
@@ -35,7 +35,7 @@ function updateCart() {
           <span>${item.quantity}</span>
           <button onclick="increaseQuantity(${item.id})">+</button>
         </div>
-        <p>Prix total: $${productTotal}</p>
+        <p id="prix-total mt-4">Prix total: $${productTotal}</p>
         
       `;
   
