@@ -28,15 +28,15 @@ function updateCart() {
       const productElement = document.createElement("div");
       productElement.classList.add("product-in-cart");
       productElement.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>Prix: $${item.price}</p>
-        <div>
+        <div class="d-flex justify-content-between w-100">
+          <h3>${item.title}</h3>
+          <p>Prix: $${item.price}</p>
           <button onclick="decreaseQuantity(${item.id})">-</button>
           <span>${item.quantity}</span>
           <button onclick="increaseQuantity(${item.id})">+</button>
+          <p id="prix-total mt-4">Prix total: $${productTotal}</p>
+          <span onclick="removeItem(${item.id})"><i class="fa-regular fa-trash-can fw-bold" style="color: #e02e37; font-size: 24px; cursor: pointer"></i></span>
         </div>
-        <p id="prix-total mt-4">Prix total: $${productTotal}</p>
-        
       `;
   
       cartContainer.appendChild(productElement);
@@ -84,6 +84,17 @@ function updateCart() {
       updateCart();
     }
   }
+
+
+function removeItem(productId){
+  cart.forEach((product)=>{
+    if(productId==product.id){
+      cart = cart.filter(item=>item.id!==productId)
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCart()
+    }
+  })
+}
   
   // Appel initial pour mettre à jour l'affichage du panier
   updateCart();
