@@ -13,17 +13,17 @@
 </head>
 <body>
     
-<div id="cartContainer" class="p-4" style="width: 100%" >
+<div id="cartContainer" class="d-flex flex-column align-items-center p-4" style="width: 100%" >
 
 </div>
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-around; width: 90%; margin: auto">
   <div id="total-price"></div>
-  <span id="clear-cart" onClick="emptyCart()"></span>
+  <span id="checkout" class="btn btn-success">Checkout</span>
+  <span id="clear-cart" onClick="emptyCart()" style="padding: 2px 15px"></span>
 </div>
-<div class="d-flex justify-content-center">
+<div class="d-flex m-5">
 <a class="btn btn-info text-decoration-none text-white fw-bold" href="index.html">Contine Shopping</a>
 </div>
-  
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
