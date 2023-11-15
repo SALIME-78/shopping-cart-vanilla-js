@@ -22,7 +22,6 @@ function updateCart() {
     noItemInCart.classList.add('mt-5', 'pt-5')
     noItemInCart.innerHTML = `<h5 class="text-center">No Item In The Cart</h5>`
 
-    
   }
 
   // Parcourir les produits dans le panier
@@ -35,17 +34,17 @@ function updateCart() {
     productElement.classList.add("product-in-cart");
     
     productElement.innerHTML = `
-        <div class="d-flex justify-content-center w-100">
-          <div class="d-flex me-5">
-             <h5 class="me-5">${item.title}</h5>
-             <p>Prix: $${item.price}</p>
+        <div class="d-flex justify-content-center align-items-center w-100 mt-5">
+          <div class="d-flex align-items-center me-5">
+             <img class="me-5" src="${item.imageUrl}" style="height: 80px; width: 80px">
+             <p class="my-0">Prix: $${item.price}</p>
           </div>
           <div>
              <span onclick="decreaseQuantity(${item.id})"><i class="fa-regular fa-square-minus" style="color: #d8ae18;cursor:pointer;font-size:26px"></i></span>
              <span class="mx-2">${item.quantity}</span>
              <span onclick="increaseQuantity(${item.id})"><i class="fa-regular fa-square-plus" style="color: #4e7f34;cursor:pointer;font-size:26px"></i></span>
              </div>
-             <p id="prix-total" class="mx-5">Prix total: $${productTotal}</p>
+             <p id="prix-total" class="mx-5 my-0">Prix total: $${productTotal}</p>
              <span onclick="removeItem(${item.id})"><i class="fa-regular fa-trash-can fw-bold" style="color: #e02e37; font-size: 25px; cursor: pointer"></i></span>
         </div>
       `;
