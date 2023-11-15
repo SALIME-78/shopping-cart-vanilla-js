@@ -37,17 +37,9 @@ const products = [
 // Get cart from local storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let navItem = document.getElementById('nav-item')
-
 let bag = document.getElementById('bag')
 
 bag.textContent = `${cart.length}`
-
-document.addEventListener('DOMContentLoaded', function() {
-
-      displayProducts();
-
-});
 
 // Displaying The list of products in the DOM
 function displayProducts() {
@@ -137,5 +129,7 @@ function addToCart(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   
 }
+
+displayProducts()
 
 

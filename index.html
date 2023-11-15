@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Shopping Cart</title>
 </head>
 
 <body>
@@ -33,23 +33,29 @@
             </li>
             <li id="nav-item" class="nav-item" onclick="toggleCartVisibility()">
               <a class="nav-link mx-2" href="cart.html"><i class="fa-solid fa-bag-shopping fa-lg  position-relative">
-                <span class="bag position-absolute" id="bag">0</span></i></a>
+                  <span class="bag position-absolute" id="bag">0</span></i></a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
+
   <div class="container">
-    <p id="already-in-cart" class="bg-warning fw-bold w-100 container m-auto d-none" style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Already In Cart</p>
-    <p id="success" class="bg-success fw-bold w-100 container m-auto d-none" style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Successfully Added To Cart</p>
+    <p id="already-in-cart" class="bg-warning fw-bold w-100 container m-auto d-none"
+      style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Already In Cart
+    </p>
+    <p id="success" class="bg-success fw-bold w-100 container m-auto d-none"
+      style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Successfully
+      Added To Cart</p>
   </div>
 
   <div id="main-content" class="container">
     <div id="product-list" class="d-flex justify-content-between">
-        <!-- Products added here dynamicaly -->
+      <!-- Products will be added here dynamicaly -->
     </div>
-</div>
+  </div>
+  
   <div class="d-flex justify-content-end mt-3 me-5">
     <a class="btn btn-success text-white fw-bold text-decoration-none" href="cart.html">Go To Cart</a>
   </div>
@@ -60,7 +66,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
-    
+
   <script src="main.js"></script>
 </body>
 
