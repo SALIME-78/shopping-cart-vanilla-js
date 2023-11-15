@@ -1,9 +1,9 @@
-// Liste des produits
+// List of products
 const products = [
   {
     id: 1,
     title:"Lenovo X260",
-    imageUrl:"/images/pc.png",
+    imageUrl:"images/pc.png",
     description:"Good computer.",
     rating:4.3,
     price: 560
@@ -11,7 +11,7 @@ const products = [
 {
     id:2,
     title:"Salomon XT",
-    imageUrl:"/images/shoes.png",
+    imageUrl:"images/shoes.png",
     description:"Good Sneaker.",
     rating:4.2,
     price:180
@@ -19,7 +19,7 @@ const products = [
 {
     id:3,
     title:"Galaxy S20",
-    imageUrl:"/images/phone.png",
+    imageUrl:"images/phone.png",
     description:"Good phone.",
     rating:4.5,
     price:750
@@ -27,14 +27,14 @@ const products = [
 {
     id:4,
     title:"Liner Algebra",
-    imageUrl:"/images/book.png",
+    imageUrl:"images/book.png",
     description:"Good book",
     rating:4.6,
     price:100
 }
 ];
 
-// Récupérer le panier depuis le local storage
+// Get cart from local storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let navItem = document.getElementById('nav-item')
@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Displaying The list of products in the DOM
 function displayProducts() {
-  // Affiche la liste des produits (ajouter des produits fictifs ici)
-  // ... (affichage et possibilité d'ajout au panier)
+  
   const productSection = document.getElementById('product-list');
   productSection.innerHTML = ''; // Clear product list
 
@@ -82,17 +82,34 @@ function displayProducts() {
   });
 }
 
-// Fonction pour ajouter un produit au panier
+// adding a product to cart
 function addToCart(productId) {
   console.log(productId)
   const success = document.getElementById("success");
-  // Vérifier si le produit est déjà dans le panier
-  const existingProduct = cart.find((item) => item.id===productId);
+  // Verify if a product is already in cart
+  const existingProduct = cart.find((item) => item.id === productId);
   if (existingProduct) {
-    alert('Product Already In Cart')
+    // alert('Product Already In Cart')
+    alreadyInCart = document.getElementById('already-in-cart')
+
+    setTimeout(() => {
+      alreadyInCart.classList.remove('d-none')
+    }, 500);
+
+    setTimeout(() => {
+      alreadyInCart.classList.add('d-block')
+      alreadyInCart.transition = 'd-block 1s ease'
+    }, 800);
+
+    setTimeout(() => {
+      alreadyInCart.classList.remove('d-block')
+      alreadyInCart.classList.add('d-none')
+      alreadyInCart.style.transition = 'd-none 1s ease'
+    }, 1200);
+
     return 
   } else {
-    // Trouver le produit dans la liste des produits
+    // Find the product in the list of products
     const product = products.find((item) => item.id === productId);
     if (product) {
       cart.push({ ...product, quantity: 1 });

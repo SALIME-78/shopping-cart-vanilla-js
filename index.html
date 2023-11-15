@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <header class="mb-5">
+  <header class="mb-2">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
       <div class="container-fluid mx-5">
         <a class="navbar-brand" href="#">Shoping Cart</a>
@@ -40,16 +40,17 @@
       </div>
     </nav>
   </header>
-  <div>
-    <span id="success" class="position-absolute bg-success fw-bold d-none" style="color: white; font-weight: bold; text-align: center; padding: 10px 0;width: 300px; top: 80px; right: 0;border-radius: 5px;">Successfully Added To Cart</span>
+  <div class="container">
+    <p id="already-in-cart" class="bg-warning fw-bold w-100 container m-auto d-none" style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Already In Cart</p>
+    <p id="success" class="bg-success fw-bold w-100 container m-auto d-none" style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Successfully Added To Cart</p>
   </div>
 
   <div id="main-content" class="container">
     <div id="product-list" class="d-flex justify-content-between">
-        <!-- Les produits seront ajoutés ici par JS -->
+        <!-- Products added here dynamicaly -->
     </div>
 </div>
-  <div>
+  <div class="d-flex justify-content-end mt-3 me-5">
     <a class="btn btn-success text-white fw-bold text-decoration-none" href="cart.html">Go To Cart</a>
   </div>
 

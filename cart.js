@@ -24,12 +24,12 @@ function updateCart() {
 
   }
 
-  // Parcourir les produits dans le panier
+  // Browse products in cart
   cart.forEach((item) => {
     const productTotal = item.price * item.quantity;
     total += productTotal;
 
-    // Créer les éléments HTML pour afficher le produit dans le panier
+    // create html elements to display items in cart
     const productElement = document.createElement("div");
     productElement.classList.add("product-in-cart");
     
