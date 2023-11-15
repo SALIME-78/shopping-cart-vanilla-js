@@ -2,12 +2,13 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 clearCartBtn = document.getElementById("clear-cart");
 
-// Fonction pour mettre à jour l'affichage du panier
+// Fuction to update displaying cart
 function updateCart() {
   const cartContainer = document.getElementById("cartContainer");
   const totalCartPrice = document.getElementById("total-price");
   const checkOut = document.getElementById('checkout')
-  // Vider le contenu du panier
+
+  // clear cart content
   cartContainer.innerHTML = "";
 
   let total = 0;
@@ -37,14 +38,14 @@ function updateCart() {
         <div class="d-flex justify-content-center align-items-center w-100 mt-5">
           <div class="d-flex align-items-center me-5">
              <img class="me-5" src="${item.imageUrl}" style="height: 80px; width: 80px">
-             <p class="my-0">Prix: $${item.price}</p>
+             <p class="my-0">Price: $${item.price}</p>
           </div>
           <div>
              <span onclick="decreaseQuantity(${item.id})"><i class="fa-regular fa-square-minus" style="color: #d8ae18;cursor:pointer;font-size:26px"></i></span>
              <span class="mx-2">${item.quantity}</span>
              <span onclick="increaseQuantity(${item.id})"><i class="fa-regular fa-square-plus" style="color: #4e7f34;cursor:pointer;font-size:26px"></i></span>
              </div>
-             <p id="prix-total" class="mx-5 my-0">Prix total: $${productTotal}</p>
+             <p id="prix-total" class="mx-5 my-0">total Price: $${productTotal}</p>
              <span onclick="removeItem(${item.id})"><i class="fa-regular fa-trash-can fw-bold" style="color: #e02e37; font-size: 25px; cursor: pointer"></i></span>
         </div>
       `;
@@ -58,39 +59,40 @@ function updateCart() {
   totalCartPrice.innerHTML = `Total To Pay: <strong style="color: #000; font-size: 20px">${total}<sup>$</sup></strong>`;
 }
 
-// Fonction pour diminuer la quantité d'un produit dans le panier
+// decrease the quantity of an item in the cart
 function decreaseQuantity(productId) {
   const product = cart.find((item) => item.id === productId);
   if (product) {
     if (product.quantity > 1) {
       product.quantity--;
     } else {
-      // Supprimer le produit du panier s'il n'y en a qu'un
+      // Remove product from cart if its quantity is 1
       cart = cart.filter((item) => item.id !== productId);
     }
 
-    // Mettre à jour le panier dans le local storage
+    // update cart in local storage
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Mettre à jour l'affichage du panier
+    // update displaying cart
     updateCart();
   }
 }
 
-// Fonction pour augmenter la quantité d'un produit dans le panier
+// increase item quantity in the cart
 function increaseQuantity(productId) {
   const product = cart.find((item) => item.id === productId);
   if (product) {
     product.quantity++;
 
-    // Mettre à jour le panier dans le local storage
+    // update cart in local storage
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Mettre à jour l'affichage du panier
+    // update displaying cart
     updateCart();
   }
 }
 
+// Remove an item from cart
 function removeItem(productId) {
   cart.forEach((product) => {
     if (productId == product.id) {
@@ -101,9 +103,9 @@ function removeItem(productId) {
   });
 }
 
-// Appel initial pour mettre à jour l'affichage du panier
 updateCart();
 
+// Clear Cart
 function emptyCart() {
   cart = [];
 
