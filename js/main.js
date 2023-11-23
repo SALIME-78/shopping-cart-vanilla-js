@@ -41,24 +41,24 @@ let bag = document.getElementById('bag')
 
 bag.textContent = `${cart.length}`
 
+let productSection = document.getElementById('product-list');
+
 // Displaying The list of products in the DOM
 function displayProducts() {
   
-  const productSection = document.getElementById('product-list');
   productSection.innerHTML = ''; // Clear product list
 
   products.forEach(product => {
       const productDiv = document.createElement('div');
       productDiv.className = 'product';
       productDiv.innerHTML = `
-      <div class="item-container">
-      <div class="main-item" style="display: flex, justify-content: center, aligni-tems: center">
+      <div id="item-container" class="item-container">
+      <div class="main-item" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap">
           <img src=${product.imageUrl} width="100%" style="background: #eceaea" alt="pc" />
       </div>
       <h5 class="item-heading">
           ${product.title}
       </h5> 
-  
       <p class="item-description">
           ${product.description}
       </p>
@@ -76,14 +76,15 @@ function displayProducts() {
 
 // adding a product to cart
 function addToCart(productId) {
-  console.log(productId)
+  
   const success = document.getElementById("success");
   // Verify if a product is already in cart
   const existingProduct = cart.find((item) => item.id === productId);
   if (existingProduct) {
     // alert('Product Already In Cart')
     alreadyInCart = document.getElementById('already-in-cart')
-
+    
+    // alert if the the product is added or already in cart
     setTimeout(() => {
       alreadyInCart.classList.remove('d-none')
     }, 500);
@@ -128,6 +129,48 @@ function addToCart(productId) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   
+}
+
+let searchBar = document.getElementById('search-products')
+
+function searchProducts(s){
+ 
+    let searchedProducts = ""
+
+    for (let i = 0; i < products.length; i++) {
+      
+      if (products[i].title.toLowerCase().startsWith(s.toLowerCase())) {
+        
+        searchedProducts +=
+              `
+              <div id="item-container" class="item-container">
+              <div class="main-item" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap">
+                  <img src=${products[i].imageUrl} width="100%" style="background: #eceaea" alt="pc" />
+              </div>
+              <h5 class="item-heading">
+                  ${products[i].title}
+              </h5> 
+          
+              <p class="item-description">
+                  ${products[i].description}
+              </p>
+              <div class="rating">
+                  <p class="desc" style="fontWeight: bold, textAlign: justify">Rating</p>
+                  <p style="font-weight: bold">${products[i].rating}</p>
+              </div>
+              <p class="item-price"><sup>$</sup>${products[i].price}</p>
+              <button class="item-cart-btn" onclick="addToCart(${products[i].id})">Add To Cart</button>
+          </div>
+          `
+      }
+      
+    }
+  
+	document.getElementById("product-list").innerHTML = searchedProducts;
+  if(searchBar.value ==""){
+    trs=""
+    // displayProducts()
+  }  
 }
 
 displayProducts()

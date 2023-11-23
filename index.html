@@ -13,9 +13,9 @@
   <title>Shopping Cart</title>
 </head>
 
-<body>
+<body id="body">
   <header class="mb-2">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <nav class="navbar navbar-expand-lg p-3"  style="background: #eceaea; box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);">
       <div class="container-fluid mx-5">
         <a class="navbar-brand" href="#">Shoping Cart</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -32,7 +32,7 @@
               <a class="nav-link mx-2" href="signup.html">Sign Up</a>
             </li>
             <li id="nav-item" class="nav-item" onclick="toggleCartVisibility()">
-              <a class="nav-link mx-2" href="cart.html"><i class="fa-solid fa-bag-shopping fa-lg  position-relative">
+              <a class="nav-link mx-2" href="cart.html"><i class="fa-solid fa-lg fa-bag-shopping position-relative" style="color: #0a0a0a;">
                   <span class="bag position-absolute" id="bag">0</span></i></a>
             </li>
           </ul>
@@ -42,16 +42,20 @@
   </header>
 
   <div class="container">
-    <p id="already-in-cart" class="bg-warning fw-bold w-100 container m-auto d-none"
+    <div class="w-100 mt-5 d-flex flex-column align-items-center">
+      <p id="already-in-cart" class="bg-warning fw-bold w-100 container m-auto d-none mb-3"
       style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Already In Cart
     </p>
-    <p id="success" class="bg-success fw-bold w-100 container m-auto d-none"
+    <p id="success" class="bg-success fw-bold w-100 container m-auto mb-3 d-none"
       style="color: white; font-weight: bold; text-align: center; padding: 10px 0; border-radius: 5px;">Successfully
-      Added To Cart</p>
+      Added To Cart
+    </p>
+      <input class="form-control w-50" name="" id="search-products" placeholder="Search Products" onkeyup="searchProducts(this.value)">
+    </div>
   </div>
 
   <div id="main-content" class="container">
-    <div id="product-list" class="d-flex justify-content-between">
+    <div id="product-list" class="d-flex justify-content-center">
       <!-- Products will be added here dynamicaly -->
     </div>
   </div>
